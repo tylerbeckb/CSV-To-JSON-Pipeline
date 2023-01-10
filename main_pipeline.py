@@ -4,7 +4,7 @@ import csv
 def retrieve (data_list, variety, min_score, max_score, region ) -> list:
     json_list = []
     # Iterates through all the data
-    for items in data_list:
+    for rows in range(len(data_list)):
         # Checks if the type matches
         if items[3] == variety:
             # Checks if the region matches
@@ -16,7 +16,9 @@ def retrieve (data_list, variety, min_score, max_score, region ) -> list:
     return json_list
 
 def save_json(json_list):
-    pass
+    output = open('output.json', 'w')
+    json_string = json.dumps(json_list)
+    output.write(json_string)
 
 # Creates list variable
 header = []
@@ -31,7 +33,7 @@ with open('wine_data.csv') as file:
         data.append ( row )
 
 # Asks for user inputs for each condition
-wine_variety = input( 'Enter the wine type to find' )
+wine_variety = input( 'Enter the wine type to find: ' )
 min_rating = int(input( 'Enter an integer for the minimum wine score to find: ' ))
 max_rating = int(input( 'Enter an integer for the maximum wine score to find: ' ))
 wine_region = input( 'Enter the region of wine to find: ' )
