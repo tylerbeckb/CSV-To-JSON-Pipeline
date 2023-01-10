@@ -9,6 +9,8 @@ def load_csv():
     data = []
     with open('wine_data.csv') as file:
         header = next(file)
+        for row in file:
+            data.append(row)
 
 
 def save_json():
