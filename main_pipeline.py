@@ -1,8 +1,19 @@
 import json
 import csv
 
-def retrieve ( header ,data, type, min_score, max_score, region ):
-    pass
+def retrieve (data_list, variety, min_score, max_score, region ) -> list:
+    json_list = []
+    # Iterates through all the data
+    for items in data_list:
+        # Checks if the type matches
+        if items[3] == variety:
+            # Checks if the region matches
+            if items[2] == region:
+                # Checks if the rating is in the range
+                if items[4] >= min_score & items[4] <= max_score:
+                    # Adds the data to the list
+                    json_list.append(items)
+    return json_list
 
 def save_json():
     pass
@@ -19,9 +30,9 @@ with open('wine_data.csv') as file:
     for row in file:
         data.append ( row )
 
-wine_type = input( 'Enter the wine type to find' )
-min_score = int(input( 'Enter an integer for the minimum wine score to find' ))
-max_score = int(input( 'Enter an integer for the maximum wine score to find' ))
-region = input( 'Enter the region of wine to find' )
+wine_variety = input( 'Enter the wine type to find' )
+min_rating = int(input( 'Enter an integer for the minimum wine score to find' ))
+max_rating = int(input( 'Enter an integer for the maximum wine score to find' ))
+wine_region = input( 'Enter the region of wine to find' )
 
-json_data = retrieve(header, data, wine_type, min_score, max_score, region)
+json_data = retrieve(data, wine_variety, min_rating, max_rating, wine_region)
