@@ -1,5 +1,6 @@
 import json
 import csv
+from csv import DictReader
 
 def retrieve (data_list, variety, min_score, max_score, region ) -> list:
     json_list = []
@@ -25,12 +26,11 @@ header = []
 data = []
 json_data = []
 # Opens csv file
-with open('wine_data.csv') as file:
-    # Reads the headers
-    header = next ( file )
-    # Adds all the data to a list
-    for row in file:
-        data.append ( row )
+with open('wine_data.csv', 'r') as file:
+    # Adds all the data to a dictionary
+    dict_reader = DictReader(file)
+     
+    list_of_dict = list(dict_reader)
 
 # Asks for user inputs for each condition
 wine_variety = input( 'Enter the wine type to find: ' )
