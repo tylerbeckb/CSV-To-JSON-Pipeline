@@ -1,17 +1,20 @@
 import json
 import csv
 
-def retrieve (type, score_range, region):
+def retrieve ( header ,data, type, score_range, region ):
     pass
-
-def load_csv():
-    header = []
-    data = []
-    with open('wine_data.csv') as file:
-        header = next(file)
-        for row in file:
-            data.append(row)
-
 
 def save_json():
     pass
+
+# Creates list variable
+header = []
+data = []
+# Opens csv file
+with open( 'wine_data.csv') as file:
+    # Reads the headers
+    header = next ( file )
+    # Adds all the data to a list
+    for row in file:
+        data.append ( row )
+
