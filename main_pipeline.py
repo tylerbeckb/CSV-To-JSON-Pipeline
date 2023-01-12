@@ -1,5 +1,6 @@
 import json
 from csv import DictReader
+import argparse
 
 def retrieve (data_dict, variety, min_score, max_score, region ) -> list:
     json_list = []
@@ -25,21 +26,28 @@ def save_json(json_list) -> None:
     # Closes the file
     output.close()
 
-# Creates list variable
-json_data = []
-# Opens csv file
-with open('wine_data.csv', 'r') as file:
-    # Adds all the data to a dictionary
-    dict_reader = DictReader(file)
-    list_of_data = list(dict_reader)
+if __name__ == '__main__':
+    # Creates list variable
+    json_data = []
 
-# Asks for user inputs for each condition
-wine_variety = input( 'Enter the wine type to find: ' )
-min_rating = int(input( 'Enter an integer for the minimum wine score to find: ' ))
-max_rating = int(input( 'Enter an integer for the maximum wine score to find: ' ))
-wine_region = input( 'Enter the region of wine to find: ' )
+    # Accepts command line inputs
+    parser = argparse.ArgumentParser()
+    parser.add_argument("File", help="CSV file name")
+    args = parser.parse_args()
 
-# Calls function to retrieve the data that meets the conditions
-json_data = retrieve(list_of_data, wine_variety, min_rating, max_rating, wine_region)
-# Calls the function that writes data to a json file
-save_json(json_data)
+    # Opens csv file
+    with open(args, 'r') as file:
+        # Adds all the data to a dictionary
+        dict_reader = DictReader(file)
+        list_of_data = list(dict_reader)
+
+    # Asks for user inputs for each condition
+    wine_variety = input( 'Enter the wine type to find: ' )
+    min_rating = int(input( 'Enter an integer for the minimum wine score to find: ' ))
+    max_rating = int(input( 'Enter an integer for the maximum wine score to find: ' ))
+    wine_region = input( 'Enter the region of wine to find: ' )
+
+    # Calls function to retrieve the data that meets the conditions
+    json_data = retrieve(list_of_data, wine_variety, min_rating, max_rating, wine_region)
+    # Calls the function that writes data to a json file
+    save_json(json_data)
