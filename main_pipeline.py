@@ -1,6 +1,6 @@
 import json
 from csv import DictReader
-import argparse
+import sys
 
 def retrieve (data_dict, variety, min_score, max_score, region ) -> list:
     json_list = []
@@ -30,14 +30,8 @@ if __name__ == '__main__':
     # Creates list variable
     json_data = []
 
-    # Accepts command line inputs
-    parser = argparse.ArgumentParser()
-    parser.add_argument("File", help="CSV file name")
-    args = parser.parse_args()
-    file_name = str(args)
-
     # Opens csv file
-    with open(file_name, 'r') as file:
+    with open(sys.argv[1], 'r') as file:
         # Adds all the data to a dictionary
         dict_reader = DictReader(file)
         list_of_data = list(dict_reader)
