@@ -1,6 +1,6 @@
-# CSV to JSON Converter
+# CSV Data Sorter to JSON
 
-File converter that takes a CSV file and transforms the information to a JSON file.
+Takes data from a CSV file and writes the data to a JSON file that meets the conditions
 
 ## Table of Contents
 
@@ -10,9 +10,8 @@ File converter that takes a CSV file and transforms the information to a JSON fi
 
 ## Overview
 
-This software will take in an input of a csv file and convert the
-information to a new json file. The input is taken in as a comand
-line input and saved in a file called output.json.
+This software will take in an input of a csv file and 3 conditions which will then copy any data that meets these conditions into a json file.
+The input is taken in as a comand line input and saved in a file called output.json.
 
 ## Installation
 
@@ -39,7 +38,8 @@ After installation you will be able to use the software for your own files.
 $ python3 main_pipeline.py name.csv
 ```
 
-* The json file will be saved in the same directory
+* Program will ask for inputs about the 3 conditions
+* Input the information and the data will be saved in a new json file
 
 ## Found a bug?
 
