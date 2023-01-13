@@ -2,18 +2,19 @@ import json
 from csv import DictReader
 import sys
 
-def retrieve (data_dict, variety, min_score, max_score, region ) -> list:
+def retrieve (data_dict, header_list, condition_list) -> list:
     json_list = []
-    # Iterates through all the data
+
     for items in data_dict:
-        # Checks if the type matches
-        if items['variety'] == variety:
-            # Checks if the region matches
-            if items['region'] == region:
-                # Checks if the rating is in the range
-                if int(float(items['rating'])) >= min_score & int(float(items['rating'])) <= max_score:
-                    # Adds the data to the list
-                    json_list.append(items)
+        count = 0
+        for header in header_list:
+            if items[header] == condition_list[count]:
+                found = True
+            else:
+                found = False
+            count = count + 1
+        if found:
+            json_list.append(items)
     return json_list
 
 def save_json(json_list) -> None:
@@ -53,7 +54,9 @@ if __name__ == '__main__':
     max_rating = int(input( 'Enter an integer for the maximum wine score to find: ' ))
     wine_region = input( 'Enter the region of wine to find: ' )
 
+    json_data = retrieve(list_of_data, conditions, condition_data)
+
     # Calls function to retrieve the data that meets the conditions
-    json_data = retrieve(list_of_data, wine_variety, min_rating, max_rating, wine_region)
+    #json_data = retrieve(list_of_data, wine_variety, min_rating, max_rating, wine_region)
     # Calls the function that writes data to a json file
     save_json(json_data)
