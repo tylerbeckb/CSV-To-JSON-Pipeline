@@ -29,12 +29,17 @@ def save_json(json_list) -> None:
 if __name__ == '__main__':
     # Creates list variable
     json_data = []
+    conditions = []
 
     # Opens csv file
     with open(sys.argv[1], 'r') as file:
         # Adds all the data to a dictionary
         dict_reader = DictReader(file)
         list_of_data = list(dict_reader)
+
+    for count in range(len(sys.argv)-2):
+        conditions.append(sys.argv[count+2])
+    print(conditions)
 
     # Asks for user inputs for each condition
     wine_variety = input( 'Enter the wine type to find: ' )
