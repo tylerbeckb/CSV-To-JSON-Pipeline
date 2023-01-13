@@ -30,6 +30,7 @@ if __name__ == '__main__':
     # Creates list variable
     json_data = []
     conditions = []
+    condition_data = []
 
     # Opens csv file
     with open(sys.argv[1], 'r') as file:
@@ -37,9 +38,14 @@ if __name__ == '__main__':
         dict_reader = DictReader(file)
         list_of_data = list(dict_reader)
 
+    # Loops through all the command line inputs
     for count in range(len(sys.argv)-2):
+        # Adds the conditions to a list
         conditions.append(sys.argv[count+2])
-    print(conditions)
+
+    # Asks the user for inputs for each condition
+    for condition in conditions:
+        condition_data.append(input('Enter the condition for the column', conditions[condition]))
 
     # Asks for user inputs for each condition
     wine_variety = input( 'Enter the wine type to find: ' )
