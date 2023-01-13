@@ -1,4 +1,4 @@
-# CSV Data Sorter to JSON
+# CSV Data Filter to JSON
 
 Takes data from a CSV file and writes the data to a JSON file that meets the conditions
 
@@ -32,13 +32,14 @@ Install the software to your local system using GitHub clone
 
 After installation you will be able to use the software for your own files.
 
-* Needs a command line input of the csv file name and to run on termial type:
+* Needs a command line input of the csv file name and the name of each header in the csv file you want to test for
 
 ```bash
-$ python3 main_pipeline.py name.csv
+$ python3 main_pipeline.py name.csv header
 ```
 
-* Program will ask for inputs about the 3 conditions
+* Program will ask for inputs for every header you put in 
+* You need to input the data in the csv file you want to filter for the header. It is case sensitive
 * Input the information and the data will be saved in a new json file
 
 ## Found a bug?
