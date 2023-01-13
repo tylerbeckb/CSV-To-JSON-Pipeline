@@ -4,15 +4,18 @@ import sys
 
 def retrieve (data_dict, header_list, condition_list) -> list:
     json_list = []
-
+    # Iterates through all the data
     for items in data_dict:
         count = 0
+        # Iterates through all the conditions
         for header in header_list:
+            # Checks if it meets the condition
             if items[header] == condition_list[count]:
                 found = True
             else:
                 found = False
             count = count + 1
+        # If it meets every condition it gets added to a list
         if found:
             json_list.append(items)
     return json_list
@@ -50,15 +53,7 @@ if __name__ == '__main__':
         str_input = input()
         condition_data.append(str_input)
 
-    # Asks for user inputs for each condition
-    wine_variety = input( 'Enter the wine type to find: ' )
-    min_rating = int(input( 'Enter an integer for the minimum wine score to find: ' ))
-    max_rating = int(input( 'Enter an integer for the maximum wine score to find: ' ))
-    wine_region = input( 'Enter the region of wine to find: ' )
-
-    json_data = retrieve(list_of_data, conditions, condition_data)
-
     # Calls function to retrieve the data that meets the conditions
-    #json_data = retrieve(list_of_data, wine_variety, min_rating, max_rating, wine_region)
+    json_data = retrieve(list_of_data, conditions, condition_data)
     # Calls the function that writes data to a json file
     save_json(json_data)
