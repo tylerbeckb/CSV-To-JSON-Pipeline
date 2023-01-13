@@ -46,7 +46,9 @@ if __name__ == '__main__':
 
     # Asks the user for inputs for each condition
     for condition in conditions:
-        condition_data.append(input('Enter the condition for the column', conditions[condition]))
+        print('Enter the condition for the column:', condition)
+        str_input = input()
+        condition_data.append(str_input)
 
     # Asks for user inputs for each condition
     wine_variety = input( 'Enter the wine type to find: ' )
