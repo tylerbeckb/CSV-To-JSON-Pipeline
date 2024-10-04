@@ -23,7 +23,7 @@ Install the software to your local system using GitHub clone
 * Write git clone and paste the URl
 
 ```bash
-  $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+  $ git clone https://github.com/tylerbeckb/CSV-To-JSON-Pipeline
 ```
 
 * Deleted the sample csv and json files
@@ -45,13 +45,3 @@ $ python3 main_pipeline.py name.csv header
 ## Found a bug?
 
 Use the issues tab to submit any issues that you find. It will be appreciated.
-
-## Buy Me A Coffee
-
-If you have learnt anything or like it, please consider supporting me.
-Anything is appreciated!
-
-![Buy Me A Coffee][2]
-
-[1]: https://www.buymeacoffee.com/tylerbbrown
-[2]: https://cdn.buymeacoffee.com/buttons/default-orange.png
